@@ -468,7 +468,10 @@ body {
     0px 2px 1px rgb(0 0 0 / 20%);
   border-radius: 0px 0px 4px 4px;
 }
-
+.team-card-body {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
 .card-body {
   border-top: 0;
   padding: 20px 24px;

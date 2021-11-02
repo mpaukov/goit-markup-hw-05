@@ -579,6 +579,7 @@ body {
 }
 
 .footer-text {
+  display: block;
   padding: 0;
   margin-bottom: 9px;
 

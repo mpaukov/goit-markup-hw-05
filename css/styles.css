@@ -16,7 +16,7 @@
   --overlay-color: rgba(0, 0, 0, 0.2);
   --overlay-card-color: rgba(33, 150, 243, 0.9);
 
-  --duration: 250ms;
+  --duration: 2250ms;
   --function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -197,7 +197,7 @@ body {
 
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -2px;
 
   display: block;
   width: 100%;
@@ -236,14 +236,41 @@ body {
   font-size: 26px;
   line-height: 1.19;
   letter-spacing: 0.03em;
+
+  transition-property: color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--function);
+}
+
+.logo:hover,
+.logo:focus {
+  color: var(--current-black-color);
+}
+
+.footer-nav > .logo:hover,
+.footer-nav > .logo:focus {
+  color: var(--current-white-color);
 }
 
 .logo-nav {
   color: var(--current-black-color);
+  transition-property: color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--function);
+}
+
+.logo:hover .logo-nav,
+.logo:focus .logo-nav,
+.logo:hover .logo-footer,
+.logo:focus .logo-footer {
+  color: var(--accent-color);
 }
 
 .logo-footer {
   color: var(--current-white-color);
+  transition-property: color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--function);
 }
 
 /* Hero */
@@ -650,6 +677,7 @@ body {
 .footer-social .social-item {
   color: var(--current-white-color);
   background-color: var(--social-passive-footer);
+  transition-property: background-color;
 }
 
 .social-item:hover,
@@ -672,13 +700,14 @@ body {
 
   background-color: var(--overlay-color);
 
-  transition-property: opacity;
+  visibility: visible;
+  transition-property: visibility;
   transition-duration: var(--duration);
   transition-timing-function: var(--function);
 }
 
 .backdrop.is-hidden {
-  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
 
@@ -686,7 +715,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
 
   min-width: 528px;
   min-height: 581px;
@@ -696,6 +725,18 @@ body {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  opacity: 1;
+
+  transition-property: opacity, transform;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--function);
+}
+
+.modal.is-hidden {
+  opacity: 0;
+
+  transform: translate(-50%, -50%) scale(0.5);
 }
 
 .modal-btn {

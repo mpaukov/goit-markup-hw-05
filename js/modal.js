@@ -3,7 +3,7 @@
     openModalBtn: document.querySelector('[data-modal-open]'),
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
-    formmodal: document.querySelector('[my-form-modal]')
+    formmodal: document.querySelector('[data-form-modal]')
   };
 
   refs.openModalBtn.addEventListener('click', toggleModal);

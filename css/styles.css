@@ -16,7 +16,7 @@
   --overlay-color: rgba(0, 0, 0, 0.2);
   --overlay-card-color: rgba(33, 150, 243, 0.9);
 
-  --duration: 2250ms;
+  --duration: 250ms;
   --function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -61,13 +61,17 @@ body {
   list-style: none;
 }
 .header {
+  position: fixed;
+  width: 100%;
+  min-height: 80px;
+  top: 0;
+  left: 0;
+  background-color: var(--current-white-color);
   border-bottom: 1px solid var(--line-color);
+  z-index: 2;
 }
 
 /* Навигация */
-.container.nav {
-  min-height: 80px;
-}
 
 .nav,
 .menu {
@@ -101,8 +105,7 @@ body {
   width: 370px;
 
   background-color: var(--current-white-color);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
   border-radius: 0px 0px 4px 4px;
 
   transition-property: box-shadow;
@@ -122,6 +125,7 @@ body {
 .portfolio-card:focus .overlay,
 .portfolio-card:focus-within .overlay {
   transform: translateY(0);
+  opacity: 1;
 }
 
 .portfolio-card:hover,
@@ -145,20 +149,38 @@ body {
   align-items: center;
   width: 100%;
   height: 294px;
+
   background-color: var(--overlay-card-color);
 
-  transform: translateY(100%);
-
-  transition-property: transform;
+  transform: translateY(101%);
+  opacity: 0;
+  transition-property: opacity, transform;
   transition-duration: var(--duration);
   transition-timing-function: var(--function);
+
+  overflow-y: auto;
+}
+
+.overlay::-webkit-scrollbar {
+  width: 10px;
+}
+.overlay::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--current-text-color);
+  border-radius: 10px;
+}
+
+.overlay::-webkit-scrollbar-thumb {
+  background: var(--hero-btn-accent-color);
+  border-radius: 10px;
+}
+
+.overlay::-webkit-scrollbar-thumb:hover {
+  background: var(--current-text-color);
 }
 
 .overlay-text {
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  width: 322px;
+  margin: 0;
+  padding: 63px 24px;
 
   color: var(--current-white-color);
   font-size: 18px;
@@ -487,12 +509,7 @@ body {
 .team-cards {
   background-color: var(--secondary-bg-color);
 }
-.card {
-  background-color: var(--current-white-color);
-  box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
-    0px 2px 1px rgb(0 0 0 / 20%);
-  border-radius: 0px 0px 4px 4px;
-}
+
 .team-card-body {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -694,7 +711,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-
+  z-index: 3;
   height: 100%;
   width: 100%;
 
@@ -715,6 +732,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%) scale(1);
 
   min-width: 528px;
